@@ -1,0 +1,222 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #eaeaea;
+    overflow: hidden;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 110px;
+    letter-spacing: 10px;
+    margin-bottom: 50px;
+
+    color: transparent;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-image: url('https://static.toiimg.com/thumb/62033069/Seven-Wonders-of-the-World.jpg?width=1200&height=900');
+    background-size: 120%;
+    animation: bg-animation 300s cubic-bezier(0.3, 0, 0.7, 1) infinite;
+}
+
+@keyframes bg-animation {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    50% {
+        background-position: 100% 100%;
+    }
+
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+
+.container {
+    margin-top: 60px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 1000px;
+    height: 600px;
+    background-color: #f5f5f5;
+    box-shadow: 0 30px 50px #dbdbdb;
+    border-radius: 20px;
+}
+
+#slide {
+    position: relative;
+    width: 100%;
+    height: 600px;
+}
+
+.item {
+    width: 200px;
+    height: 300px;
+    background-position: 50% 50%;
+    display: inline-block;
+    transition: 0.5s;
+    background-size: cover;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    transform: translate(0, -50%);
+    border-radius: 20px;
+    box-shadow: 0 5px 16px #505050;
+    transition: all ease-in-out .5s;
+}
+
+.item img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.item:nth-child(1) {
+    left: 0;
+    top: 0;
+    transform: translate(0, 0);
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: none;
+}
+
+.item:nth-child(2) {
+    left: 50%;
+}
+
+.item:nth-child(3) {
+    left: calc(50% + 220px);
+}
+
+.item:nth-child(4) {
+    left: calc(50% + 440px);
+}
+
+.item:nth-child(5) {
+    /* left: calc(50% + 440px); */
+    left: calc(50% + 660px);
+    opacity: 0;
+}
+
+.item:nth-child(n+6) {
+    /* left: calc(50% + 660px); */
+    left: calc(50% + 880px);
+    opacity: 0;
+}
+
+.item .content {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    width: 300px;
+    text-align: left;
+    padding: 20px;
+    color: #eee;
+    transform: translate(0, -50%);
+    display: none;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.item .content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #00000066;
+    opacity: 0.5;
+    animation: showcontent 0.5s ease-in-out 1 forwards;
+}
+
+.item:nth-child(1) .content {
+    display: block;
+    position: absolute;
+    z-index: 11111;
+}
+
+.item .name {
+    font-size: 40px;
+    font-weight: bold;
+    opacity: 0;
+    animation: showcontent 0.5s ease-in-out 1 forwards;
+}
+
+.item .desc {
+    font-size: 18px;
+    margin: 20px 0;
+    opacity: 0;
+    animation: showcontent 0.5s ease-in-out 0.5s 1 forwards;
+}
+
+.item button {
+    padding: 10px 20px;
+    border: none;
+    opacity: 0;
+    font-size: 14px;
+    outline: none;
+    border: none;
+    animation: showcontent 0.5s ease-in-out .6s 1 forwards;
+    /* border-radius: 10px; */
+    cursor: pointer;
+}
+
+.item button:hover {
+    background-color: #999;
+    color: #fff;
+}
+
+@keyframes showcontent {
+    from {
+        opacity: 0;
+        transform: translate(0, 100px);
+        filter: blur(33px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(0, 0);
+        filter: blur(0);
+    }
+}
+
+.buttons {
+    position: absolute;
+    bottom: 30px;
+    z-index: 222222;
+    text-align: center;
+    width: 100%;
+}
+
+.buttons button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #555;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.buttons button .fa-solid,
+.fas {
+    font-weight: 900;
+    font-size: 30px;
+}
+
+.buttons button:hover {
+    background-color: #999;
+}
